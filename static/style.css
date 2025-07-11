@@ -1,0 +1,585 @@
+/* Root color variables for light theme (default) */
+:root {
+    /* Clean & Tech-Looking (Light Mode) */
+    --bg-color: #ECEFF1; /* Light Gray-Blue for body background */
+    --container-bg: #FFFFFF; /* White for main container */
+    --sidebar-bg: #CFD8DC; /* Slightly darker Light Gray-Blue for sidebar */
+    --sidebar-text: #212121; /* Dark text for sidebar */
+    --sidebar-accent: #4A90E2; /* Cool Blue for sidebar titles/accents */
+    --sidebar-history-item-bg: #F5F5F5; /* Very light grey for history items */
+    --sidebar-history-item-hover-bg: #E0E0E0; /* Slightly darker hover */
+    --sidebar-history-item-hover-highlight: rgba(74, 144, 226, 0.1); /* Cool Blue transparent */
+    --sidebar-delete-icon: #757575; /* Medium grey */
+
+    --chat-section-bg: #FFFFFF; /* White for chat section background */
+    --chat-header-bg: #4A90E2; /* Cool Blue for header */
+    --chat-header-text: #FFFFFF; /* White for header text */
+    --chat-header-bubble-color: rgba(255, 255, 255, 0.15); /* Transparent white for header animations */
+
+    --chat-box-bg: #FFFFFF; /* White for chat box background */
+    --user-message-bg: #E0F2F7; /* Very light blue for user messages */
+    --bot-message-bg: #F1F8E9; /* Very light green for bot messages (subtle differentiation) */
+    --initial-greeting-bg: #D9E4EC; /* Accent for initial greeting */
+    --initial-greeting-text: #212121; /* Dark text for greeting */
+    --typing-indicator-bg: #E0E0E0; /* Light grey for typing */
+    --typing-indicator-text: #616161; /* Darker grey for typing text */
+
+    --text-color: #212121; /* Dark text for general text */
+
+    --input-bg: #FFFFFF; /* White for input field */
+    --input-border: #D9E4EC; /* Accent border */
+    --input-placeholder: #757575; /* Medium grey placeholder */
+    --input-focus-border: #4A90E2; /* Cool Blue on focus */
+    --input-focus-shadow: rgba(74, 144, 226, 0.3); /* Cool Blue glow */
+
+    --send-button-bg: #1976D2; /* Darker Blue for send button */
+    --send-button-color: white;
+    --send-button-shadow: rgba(25, 118, 210, 0.3);
+
+    --primary-button-bg: #4A90E2; /* Cool Blue for primary buttons */
+    --primary-button-color: white;
+    --danger-button-bg: #D32F2F; /* Red for danger buttons */
+    --danger-button-color: white;
+
+    --scrollbar-thumb: #90CAF9; /* Light Blue for scrollbar thumb */
+    --scrollbar-track: #E0E0E0; /* Light grey for scrollbar track */
+    --scrollbar-border: #CFD8DC; /* Slightly darker Light Gray-Blue */
+}
+
+/* Dark mode color variables */
+body.dark-mode {
+    /* Dark Mode Elegance */
+    --bg-color: #121212; /* Dark background */
+    --container-bg: #1F1F1F; /* Dark chat bubbles / container background */
+    --sidebar-bg: #1A1A1A; /* Slightly lighter than main background for contrast */
+    --sidebar-text: #E0E0E0; /* Light text */
+    --sidebar-accent: #80DEEA; /* Accent color (light cyan) */
+    --sidebar-history-item-bg: #282828; /* Darker than container */
+    --sidebar-history-item-hover-bg: #37474F; /* Bot message bubble color */
+    --sidebar-history-item-hover-highlight: rgba(128, 222, 234, 0.1); /* Accent color with transparency */
+    --sidebar-delete-icon: #BDBDBD; /* Lighter grey */
+
+    --chat-section-bg: #1F1F1F; /* Same as container */
+    --chat-header-bg: #1A1A1A; /* Same as sidebar */
+    --chat-header-text: #E0E0E0; /* Light text */
+    --chat-header-bubble-color: rgba(128, 222, 234, 0.15); /* Accent color with transparency */
+
+    --chat-box-bg: #1F1F1F; /* Same as container */
+    --user-message-bg: #00BCD4; /* User message bubble color (cyan) */
+    --bot-message-bg: #37474F; /* Bot message bubble color (dark teal) */
+    --initial-greeting-bg: #282828; /* Darker grey */
+    --initial-greeting-text: #80DEEA; /* Accent color */
+    --typing-indicator-bg: #282828; /* Darker grey for typing */
+    --typing-indicator-text: #BDBDBD; /* Lighter grey text */
+
+    --text-color: #E0E0E0; /* Light text for general content */
+
+    --input-bg: #282828; /* Darker input field */
+    --input-border: #37474F; /* Bot message bubble color */
+    --input-placeholder: #9E9E9E; /* Medium grey placeholder */
+    --input-focus-border: #00BCD4; /* User message bubble color */
+    --input-focus-shadow: rgba(0, 188, 212, 0.3); /* Vibrant glow */
+
+    --send-button-bg: #80DEEA; /* Accent color for send button */
+    --send-button-color: #121212; /* Dark text on accent */
+    --send-button-shadow: rgba(128, 222, 234, 0.3);
+
+    --primary-button-bg: #00BCD4; /* User message bubble color */
+    --primary-button-color: #121212; /* Dark text on light accent */
+    --danger-button-bg: #D32F2F; /* Red */
+    --danger-button-color: #E0E0E0;
+
+    --scrollbar-thumb: #37474F; /* Bot message bubble color */
+    --scrollbar-track: #282828; /* Dark track */
+    --scrollbar-border: #1F1F1F; /* Dark background for border */
+}
+
+
+/* General Body and Font Settings */
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+    position: relative;
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+/* Background animation */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, var(--sidebar-bg), var(--sidebar-accent), var(--sidebar-bg)); /* Uses theme colors */
+    background-size: 400% 400%;
+    animation: gradientShift 18s ease infinite;
+    z-index: -1;
+    opacity: 0.4;
+    transition: background 0.5s ease, opacity 0.5s ease;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Main Container */
+.container {
+    display: flex;
+    width: 90%;
+    max-width: 1300px;
+    height: 90vh;
+    border-radius: 20px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+    background-color: var(--container-bg);
+    backdrop-filter: blur(10px);
+    animation: scaleIn 0.8s ease-out forwards;
+    transform-origin: center;
+    transition: background-color 0.5s ease, box-shadow 0.5s ease;
+}
+
+@keyframes scaleIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* Sidebar Styling */
+.sidebar {
+    width: 320px;
+    background: var(--sidebar-bg);
+    color: var(--sidebar-text);
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 2px 0 10px rgba(0,0,0,0.15);
+    transition: background 0.5s ease, color 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease;
+}
+
+.sidebar h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--sidebar-accent);
+    color: var(--sidebar-accent);
+    text-align: center;
+    letter-spacing: 0.8px;
+    font-weight: 700;
+    transition: color 0.5s ease, border-color 0.5s ease;
+}
+
+.sidebar-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 25px;
+}
+
+.sidebar-button {
+    padding: 14px 20px;
+    font-size: 17px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-weight: 600;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.sidebar-button i {
+    font-size: 18px;
+}
+
+.primary-button {
+    background-color: var(--primary-button-bg);
+    color: var(--primary-button-color);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.primary-button:hover {
+    background-color: var(--primary-button-bg); /* Keeping same color for hover for simplicity, can make darker */
+    filter: brightness(90%); /* Darken slightly on hover */
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+.danger-button {
+    background-color: var(--danger-button-bg);
+    color: var(--danger-button-color);
+}
+
+.danger-button:hover {
+    background-color: var(--danger-button-bg); /* Keeping same color for hover for simplicity, can make darker */
+    filter: brightness(90%);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex-grow: 1;
+    overflow-y: auto;
+    padding-right: 8px;
+}
+
+.sidebar li {
+    background-color: var(--sidebar-history-item-bg);
+    margin-bottom: 10px;
+    padding: 15px;
+    border-radius: 12px;
+    cursor: pointer;
+    color: var(--sidebar-text);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+    font-size: 15px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.sidebar li::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background-color: var(--sidebar-history-item-hover-highlight);
+    transition: left 0.3s ease;
+    z-index: 0;
+}
+
+.sidebar li:hover::before {
+    left: 0;
+}
+
+.sidebar li:hover {
+    background-color: var(--sidebar-history-item-hover-bg);
+    color: var(--sidebar-text); /* Keep same text color on hover for better contrast on changing background */
+    transform: translateX(8px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.history-item-text {
+    flex-grow: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-right: 15px;
+    position: relative;
+    z-index: 1;
+}
+
+.delete-history-item {
+    background: none;
+    border: none;
+    color: var(--sidebar-delete-icon);
+    cursor: pointer;
+    font-size: 16px;
+    padding: 8px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.delete-history-item:hover {
+    color: white;
+    background-color: var(--danger-button-bg);
+    transform: scale(1.1);
+}
+
+/* Chat Section */
+.chat-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--chat-section-bg);
+    transition: background-color 0.5s ease;
+}
+
+.chat-header {
+    background: var(--chat-header-bg);
+    padding: 25px;
+    color: var(--chat-header-text);
+    text-align: center;
+    font-size: 28px;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    position: relative;
+    overflow: hidden;
+    display: flex; /* Make it a flex container */
+    justify-content: space-between; /* Space out content */
+    align-items: center; /* Vertically align */
+    transition: background 0.5s ease, color 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease;
+}
+
+.chat-header h1 {
+    margin: 0;
+    flex-grow: 1; /* Allow heading to take available space */
+    position: relative;
+    z-index: 1;
+}
+
+/* Theme Toggle Button */
+.theme-toggle-button {
+    background: none;
+    border: 1px solid var(--chat-header-text); /* Border matches text color */
+    color: var(--chat-header-text);
+    font-size: 22px; /* Larger icon */
+    padding: 10px 15px;
+    border-radius: 50%; /* Circular button */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px; /* Fixed width for circle */
+    height: 50px; /* Fixed height for circle */
+    flex-shrink: 0; /* Don't let it shrink */
+}
+
+.theme-toggle-button:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Slight hover effect */
+    transform: scale(1.1);
+}
+
+/* Animated bubbles in header */
+.chat-header::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: -50px;
+    width: 100px;
+    height: 100px;
+    background-color: var(--chat-header-bubble-color);
+    border-radius: 50%;
+    animation: headerBubble1 15s infinite ease-in-out;
+    z-index: 0;
+}
+
+.chat-header::after {
+    content: '';
+    position: absolute;
+    bottom: -30px;
+    right: -30px;
+    width: 60px;
+    height: 60px;
+    background-color: var(--chat-header-bubble-color);
+    border-radius: 50%;
+    animation: headerBubble2 10s infinite ease-in-out reverse;
+    z-index: 0;
+}
+
+@keyframes headerBubble1 {
+    0% { transform: translate(0, 0); opacity: 0.8; }
+    25% { transform: translate(50px, 20px); opacity: 0.6; }
+    50% { transform: translate(100px, 0); opacity: 0.8; }
+    75% { transform: translate(50px, -20px); opacity: 0.6; }
+    100% { transform: translate(0, 0); opacity: 0.8; }
+}
+
+@keyframes headerBubble2 {
+    0% { transform: translate(0, 0); opacity: 0.7; }
+    25% { transform: translate(-30px, -10px); opacity: 0.5; }
+    50% { transform: translate(-60px, 0); opacity: 0.7; }
+    75% { transform: translate(-30px, 10px); opacity: 0.5; }
+    100% { transform: translate(0, 0); opacity: 0.7; }
+}
+
+
+.chat-box {
+    flex: 1;
+    padding: 30px;
+    overflow-y: auto;
+    background-color: var(--chat-box-bg);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    transition: background-color 0.5s ease;
+}
+
+/* Scrollbar styling */
+.chat-box::-webkit-scrollbar,
+.sidebar ul::-webkit-scrollbar {
+    width: 10px;
+}
+
+.chat-box::-webkit-scrollbar-track,
+.sidebar ul::-webkit-scrollbar-track {
+    background: var(--scrollbar-track);
+    border-radius: 10px;
+}
+
+.chat-box::-webkit-scrollbar-thumb,
+.sidebar ul::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb);
+    border-radius: 10px;
+    border: 2px solid var(--scrollbar-border);
+}
+
+.chat-box::-webkit-scrollbar-thumb:hover,
+.sidebar ul::-webkit-scrollbar-thumb:hover {
+    filter: brightness(120%);
+}
+
+
+.chat-message {
+    padding: 15px 22px;
+    border-radius: 25px;
+    max-width: 80%;
+    word-wrap: break-word;
+    animation: slideInMessage 0.6s ease-out forwards;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    font-size: 16px;
+    line-height: 1.5;
+    position: relative;
+    transition: background-color 0.5s ease, color 0.5s ease, box-shadow 0.5s ease;
+}
+
+/* Initial greeting message style */
+.chat-message.initial-greeting {
+    background-color: var(--initial-greeting-bg);
+    color: var(--initial-greeting-text);
+    align-self: flex-start;
+    font-weight: 500;
+    border: 1px solid var(--input-border);
+}
+
+
+.chat-message.user {
+    align-self: flex-end;
+    background-color: var(--user-message-bg);
+    color: var(--text-color);
+    margin-left: auto;
+    border-bottom-right-radius: 8px;
+    transform-origin: right bottom;
+}
+
+.chat-message.bot {
+    align-self: flex-start;
+    background-color: var(--bot-message-bg);
+    color: var(--text-color);
+    margin-right: auto;
+    border-bottom-left-radius: 8px;
+    transform-origin: left bottom;
+}
+
+/* Typing indicator */
+.chat-message.bot.typing {
+    background-color: var(--typing-indicator-bg);
+    font-style: italic;
+    color: var(--typing-indicator-text);
+    animation: pulse 1.5s infinite ease-in-out;
+    box-shadow: none;
+}
+
+
+/* Input Form */
+#chat-form {
+    display: flex;
+    padding: 25px;
+    background-color: var(--chat-section-bg); /* Same as chat section background */
+    border-top: 1px solid rgba(0,0,0,0.1);
+    gap: 15px;
+    box-shadow: 0 -5px 15px rgba(0,0,0,0.05);
+    transition: background-color 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease;
+}
+
+#user-input {
+    flex: 1;
+    padding: 15px 25px;
+    font-size: 17px;
+    border: 2px solid var(--input-border);
+    border-radius: 30px;
+    outline: none;
+    transition: all 0.3s ease;
+    background-color: var(--input-bg);
+    color: var(--text-color);
+}
+
+#user-input::placeholder {
+    color: var(--input-placeholder);
+}
+
+#user-input:focus {
+    border-color: var(--input-focus-border);
+    box-shadow: 0 0 0 4px var(--input-focus-shadow);
+}
+
+.send-button {
+    padding: 15px 30px;
+    font-size: 17px;
+    background-color: var(--send-button-bg);
+    color: var(--send-button-color);
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    font-weight: 600;
+    box-shadow: 0 5px 15px var(--send-button-shadow);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.send-button:hover {
+    background-color: var(--send-button-bg);
+    filter: brightness(90%); /* Darken slightly on hover */
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 8px 20px var(--send-button-shadow);
+}
+
+.send-button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* Keyframe Animations */
+@keyframes slideInMessage {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes pulse {
+    0% { opacity: 0.7; }
+    50% { opacity: 1; }
+    100% { opacity: 0.7; }
+}
+
+/* Custom scrollbar for Firefox */
+@-moz-document url-prefix() {
+    .chat-box, .sidebar ul {
+        scrollbar-width: thin;
+        scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+    }
+}
